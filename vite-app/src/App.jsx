@@ -16,8 +16,8 @@ function App() {
         <Routes>
             <Route exact path='/' element={<Home />} />
             <Route path='/menu' element={<Menu />} />
-            <Route exact='/cart' element={<Cart />} />
-            <Route exact='/about' element={<About />} />
+            <Route path='/cart' element={<Cart />} />
+            <Route path='/about' element={<About />} />
         </Routes>
       </Router>
   )
