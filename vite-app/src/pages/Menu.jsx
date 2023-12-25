@@ -1,7 +1,6 @@
 import  ProductList  from "../components/ProductCard/ProductList";
-import { DRINKS } from "../database/drinks/drinks";
-import { MEALS } from "../database/meals/meals";
-import { DisplayCart } from "../store/features/DisplayCart/DisplayCart";
+import { Cart } from "../components/Cart/Cart";
+import { MENU } from "../database/menu";
 
 function Menu() {
   return (
@@ -16,11 +15,10 @@ function Menu() {
       </div>
       <div className="menu-content flex">
         <div className="basis-1/4">
-          <DisplayCart />
+          <Cart />
         </div>
         <div className="basis-3/4">
-          <ProductList products={DRINKS} />
-          <ProductList products={MEALS} />
+          <ProductList products={MENU} />
         </div>
       </div>
     </div>

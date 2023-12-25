@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { addToCart } from './addToCartSlice';
+import { addToCart } from './CartSlice';
 
 
 export const AddItemToCart = ({ id, name, price}) => {
@@ -16,7 +16,8 @@ export const AddItemToCart = ({ id, name, price}) => {
     }
     return (
         // Add item to cart when clicked
-        <button onClick={() => handleAddToCart(id, name, price, 1)}>
+        <button onClick={() => handleAddToCart(id, name, price, 1)}
+            className="text-center p-2 m-2 bg-[#d5dee2] rounded-lg w-1/2">
             ORDER
         </button>
     )
