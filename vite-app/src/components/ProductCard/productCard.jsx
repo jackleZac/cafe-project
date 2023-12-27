@@ -23,7 +23,7 @@ const ProductCard = ({ id, name, imageKey, description, category, price }) => {
     }, [imageKey]);
 
     return (
-        <div className="product-card relative mx-2 my-3 w-80 bg-[#f5f5ef] shadow-md">
+        <div className="relative mx-2 my-3 w-1/5 h-72 bg-[#f5f5ef] shadow-md">
             {loading ? (<p>Loading...</p>) : ( 
             <div>
                 <div className="image-card">
@@ -32,16 +32,17 @@ const ProductCard = ({ id, name, imageKey, description, category, price }) => {
                         <img 
                             src={productImage}
                             alt={name} 
-                            style={{ width: '250px', height: '200px' }}
+                            style={{ width: '170px', height: '140px' }}
                             className="mx-auto mt-4"/>
                     )}
                 </div>
-                <div className="content-card">
-                    <div className="title text-center font-bold">
-                        <h1 className="m-4">{name}</h1>
+                <div className="px-4">
+                    <div className="text-center">
+                        <h1 className="my-2 font-bold">{name}</h1>
+                        
                     </div>
-                    <div className="bottom-card flex object-bottom">
-                        <div className="text-center p-2 m-2 w-1/2">${price}</div>
+                    <div className="text-center flex flex-row">
+                        <div className="m-2 font-bold text-2xl p-2 basis-1/2">$ {price}</div>
                         <AddItemToCart id={id} name={name} price={price}></AddItemToCart>
                     </div>
                 </div> 

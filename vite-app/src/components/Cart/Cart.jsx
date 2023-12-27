@@ -1,5 +1,5 @@
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useState, use } from "react";
 import { itemsInCart } from "../../store/features/handleCart/CartSlice";
 import { AddQuantity } from "../../store/features/handleCart/AddQuantity";
 import { MinusQuantity } from "../../store/features/handleCart/MinusQuantity";
@@ -8,31 +8,28 @@ import { ShowTotalPrice } from "../../store/features/handleCart/ShowTotalPrice";
 
 
 export const Cart = () => {
-
-    // https://www.flaticon.com/free-icons/close Close icons created by joalfa - Flaticon
+    // Retrieve existing items in a cart
     const items = useSelector(itemsInCart);
-    
+
     return (
-        <div className="m-2 h-3/4 fixed w-1/4 bg-[#ffffff] rounded">
-            <h2 className="text-center font-bold text-xl p-2">My Cart</h2>
-            <div className="p-4 mt-2 bg-[#f5f5ef] min-h-1/2 m-2">
-                {items.length == 0 ? <div className="text-center">Empty</div> : 
+        <div className="m-2 p-2 min-h-1/4 bg-[#ffffff] rounded">
+            <h2 className="text-center font-bold text-xl py-2">My Cart</h2>
+            <div className="p-4 mt-2 overflow-y-auto">
+                {items.length == 0 ? <p className="text-center">Empty</p> : 
                 <ul>
                     {items.map((eachItem) => (
                         <li key={eachItem.id}>
                             <div className="flex p-2 w-full border-b">
-                                <div className="w-2/4">
-                                    <div className="text-lg">{eachItem.name}</div>
-                                    <div className="">${eachItem.price}</div>
+                                <div className="w-3/5 truncate">
+                                    <div className="text-base">{eachItem.name}</div>
+                                    <div className="text-sm">${eachItem.price}</div>
                                 </div>
-                                <div className="w-1/4 ml-2">
-                                    <div className="flex flex-reverse items-center justify-center h-1/2 bg-[#d9d9d9] text-center">
-                                        <AddQuantity {...eachItem}/>
-                                        <div className="basis-1/2">{eachItem.quantity}</div>
-                                        <MinusQuantity {...eachItem} />
-                                    </div>
+                                <div className="w-1/5 pl-2 flex my-auto text-center">
+                                    <AddQuantity {...eachItem}/>
+                                    <div className="basis-1/2 m-2">{eachItem.quantity}</div>
+                                    <MinusQuantity {...eachItem} />
                                 </div>
-                                <div className="w-1/4">
+                                <div className="w-1/5">
                                     <RemoveItem {...eachItem} />
                                 </div>
                             </div>
@@ -41,6 +38,7 @@ export const Cart = () => {
                 </ul>}
             </div>
             <ShowTotalPrice />
+            <button className="w-full p-4 text-center border-solid border-2">CHECKOUT</button>
         </div>
     )
 }

@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { CiSquareMinus } from "react-icons/ci";
 import { useDispatch } from 'react-redux';
 import { minusItemQty } from './CartSlice';
 import { MENU } from '../../../database/menu';
@@ -17,8 +18,8 @@ export const MinusQuantity = ({ id }) => {
         }
     }
     return (
-    <button onClick={() => handleMinusQuantity(id)}>
-        -
+    <button onClick={() => handleMinusQuantity(id)} className="text-xl">
+        <CiSquareMinus />
     </button>
   )
 }
