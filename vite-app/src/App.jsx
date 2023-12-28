@@ -1,7 +1,7 @@
 
 import './App.css';
 import './index.css';
-import Header from './components/Header/Header';
+import { Header } from './components/Header/Header';
 import Home from './pages/Home';
 import Menu from './pages/Menu';
 import Cart from './pages/Cart';
