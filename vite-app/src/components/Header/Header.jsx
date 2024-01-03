@@ -4,7 +4,7 @@ import { VscAccount } from "react-icons/vsc";
 import LOGO from "../../assets/artisanBrewsBrand.png";
 
 const navigation = [
-    { name: 'HOME', href: '/home', current: true},
+    { name: 'HOME', href: '/', current: true},
     { name: 'MENU', href: '/menu', current: false},
     { name: 'ABOUT US', href: '/about', current: false},
     { name: 'CONTACT US', href: '/contact', current: false}

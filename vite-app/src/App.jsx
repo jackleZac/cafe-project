@@ -2,6 +2,7 @@
 import './App.css';
 import './index.css';
 import { Header } from './components/Header/Header';
+import { Footer } from './components/Footer/Footer';
 import Home from './pages/Home';
 import Menu from './pages/Menu';
 import Cart from './pages/Cart';
@@ -19,6 +20,7 @@ function App() {
             <Route path='/cart' element={<Cart />} />
             <Route path='/about' element={<About />} />
         </Routes>
+        <Footer />
       </Router>
   )
 }
