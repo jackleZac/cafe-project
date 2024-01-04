@@ -17,7 +17,7 @@ export const AddItemToCart = ({ id, name, price}) => {
     return (
         // Add item to cart when clicked
         <button onClick={() => handleAddToCart(id, name, price, 1)}
-            className="text-center m-2 basis-1/2 bg-[#d5dee2] rounded-xl">
+            className="text-sm text-center my-4 basis-1/2 bg-[#d5dee2] rounded-xl">
             ORDER
         </button>
     )

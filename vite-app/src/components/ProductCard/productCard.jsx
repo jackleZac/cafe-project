@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { SpinningCircles } from 'react-loading-icons';
 import { AddItemToCart } from '../../store/features/handleCart/addItemToCart';
 
 const ProductCard = ({ id, name, imageKey, description, category, price }) => {
@@ -27,7 +28,7 @@ const ProductCard = ({ id, name, imageKey, description, category, price }) => {
             {loading ? (<p>Loading...</p>) : ( 
             <div>
                 <div className="image-card">
-                    {imageError ? (<p>Error Loading..</p>)
+                    {imageError ? (<SpinningCircles className='bg-[#808080]'/>)
                     : (
                         <img 
                             src={productImage}
@@ -38,8 +39,8 @@ const ProductCard = ({ id, name, imageKey, description, category, price }) => {
                 </div>
                 <div className="px-4">
                     <div className="text-center">
-                        <h1 className="my-2 font-bold">{name}</h1>
-                        
+                        <h1 className="py-2 text-sm">{name}</h1>
+                        {!description ? <p className='h-8'></p> : <p className='h-8 text-center text-xs'>{description}</p>}
                     </div>
                     <div className="text-center flex flex-row">
                         <div className="m-2 font-bold text-2xl p-2 basis-1/2">$ {price}</div>
