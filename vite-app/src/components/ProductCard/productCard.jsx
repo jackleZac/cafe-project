@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { SpinningCircles } from 'react-loading-icons';
-import { AddItemToCart } from '../../store/features/handleCart/addItemToCart';
+import { AddItemToCart } from '../../redux/features/handleCart/addItemToCart';
 
 const ProductCard = ({ id, name, imageKey, description, category, price }) => {
     const [imageError, setImageError] = useState(false);

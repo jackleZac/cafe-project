@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { itemsInCart } from "../../store/features/handleCart/CartSlice";
-import { AddQuantity } from "../../store/features/handleCart/AddQuantity";
-import { MinusQuantity } from "../../store/features/handleCart/MinusQuantity";
-import { RemoveItem } from "../../store/features/handleCart/RemoveItem";
-import { ShowTotalPrice } from "../../store/features/handleCart/ShowTotalPrice";
+import { itemsInCart } from "../../redux/features/handleCart/CartSlice";
+import { AddQuantity } from "../../redux/features/handleCart/AddQuantity";
+import { MinusQuantity } from "../../redux/features/handleCart/MinusQuantity";
+import { RemoveItem } from "../../redux/features/handleCart/RemoveItem";
+import { ShowTotalPrice } from "../../redux/features/handleCart/ShowTotalPrice";
 
 
 export const Cart = () => {
