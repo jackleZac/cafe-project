@@ -4,14 +4,14 @@ import { useDispatch } from 'react-redux';
 import { addItemQty } from './CartSlice';
 import { MENU } from '../../../database/menu';
 
-export const AddQuantity = ({ id }) => {
+export const AddQuantity = ({ _id }) => {
     const dispatch = useDispatch();
-    const handleAddQuantity = (id) => {
-        const selectedItem = MENU.find((product) => product.id === id);
+    const handleAddQuantity = (_id) => {
+        const selectedItem = MENU.find((product) => product._id === _id);
         console.log(selectedItem);
         // Find initial price of selected item
         const initialPrice = selectedItem.price;
-        const item = {id, price:initialPrice};
+        const item = {_id, price:initialPrice};
         try {
             dispatch(addItemQty(item));
         } catch(error) {
@@ -19,7 +19,7 @@ export const AddQuantity = ({ id }) => {
         }
     }
     return (
-    <button onClick={() => handleAddQuantity(id)} className="text-xl">
+    <button onClick={() => handleAddQuantity(_id)} className="text-xl">
         <CiSquarePlus />
     </button>
   )

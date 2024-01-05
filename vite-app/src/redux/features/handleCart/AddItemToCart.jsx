@@ -2,10 +2,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addToCart } from './CartSlice';
 
 
-export const AddItemToCart = ({ id, name, price}) => {
+export const AddItemToCart = ({_id, name, price}) => {
     const dispatch = useDispatch();
-    const handleAddToCart = (id, name, price, quantity) => {
-        const item = {id, name, price, quantity};
+    const handleAddToCart = (_id, name, price, quantity) => {
+        const item = {_id, name, price, quantity};
         // Console log for testing purposes
         try {
             dispatch(addToCart(item));
@@ -16,7 +16,7 @@ export const AddItemToCart = ({ id, name, price}) => {
     }
     return (
         // Add item to cart when clicked
-        <button onClick={() => handleAddToCart(id, name, price, 1)}
+        <button onClick={() => handleAddToCart(_id, name, price, 1)}
             className="text-sm text-center my-4 basis-1/2 bg-[#d5dee2] rounded-xl">
             ORDER
         </button>

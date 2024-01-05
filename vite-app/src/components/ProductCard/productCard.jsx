@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { SpinningCircles } from 'react-loading-icons';
 import { AddItemToCart } from '../../redux/features/handleCart/addItemToCart';
+import { useDispatch } from 'react-redux';
 
-const ProductCard = ({ id, name, imageKey, description, category, price }) => {
+const ProductCard = ({ _id, name, imageKey, description, category, price }) => {
+    console.log('ProductCard _id:', _id);
     const [imageError, setImageError] = useState(false);
     const [loading, setLoading] = useState(true);
     const [productImage, setProductImage] = useState(null);
-
     useEffect(() => {
         const importImage = async () => {
             try {
@@ -33,7 +34,7 @@ const ProductCard = ({ id, name, imageKey, description, category, price }) => {
                         <img 
                             src={productImage}
                             alt={name} 
-                            style={{ width: '170px', height: '140px' }}
+                            style={{ w_idth: '170px', height: '140px' }}
                             className="mx-auto mt-4"/>
                     )}
                 </div>
@@ -44,7 +45,7 @@ const ProductCard = ({ id, name, imageKey, description, category, price }) => {
                     </div>
                     <div className="text-center flex flex-row">
                         <div className="m-2 font-bold text-2xl p-2 basis-1/2">$ {price}</div>
-                        <AddItemToCart id={id} name={name} price={price}></AddItemToCart>
+                        <AddItemToCart _id={_id} name={name} price={price} />
                     </div>
                 </div> 
             </div>

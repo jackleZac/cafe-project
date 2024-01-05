@@ -3,12 +3,12 @@ import { RiDeleteRow } from "react-icons/ri";
 import { useDispatch } from 'react-redux';
 import { deleteItem } from './CartSlice';
 
-export const RemoveItem = ({ id }) => {
+export const RemoveItem = ({ _id }) => {
 
     // https://www.flaticon.com/free-icons/delete - Delete icons created by Those Icons - Flaticon
     const dispatch = useDispatch();
-    const handleDelete = (id) => {
-        const item = { id };
+    const handleDelete = (_id) => {
+        const item = { _id };
         try {
             dispatch(deleteItem(item));
         } catch(error) {
@@ -16,6 +16,6 @@ export const RemoveItem = ({ id }) => {
         }
     }
     return (
-        <button onClick={() => handleDelete(id)} className="float-right"><RiDeleteRow /></button>
+        <button onClick={() => handleDelete(_id)} className="float-right"><RiDeleteRow /></button>
     )
 }

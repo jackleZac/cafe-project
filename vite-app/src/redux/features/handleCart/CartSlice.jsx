@@ -16,14 +16,14 @@ export const CartSlice = createSlice({
         addToCart: (state, action) => {
             try {
                 const itemToAdd = action.payload;
-                // Check if the item with the same id already exists in the cart
-                const existingItem = state.cart.find(item => item.id === itemToAdd.id);
+                // Check if the item with the same _id already exists in the cart
+                const existingItem = state.cart.find(item => item._id === itemToAdd._id);
                 if (existingItem) {
                     // If item has been previously added, just update quantity and price
                     existingItem.quantity += 1;
                     existingItem.price += itemToAdd.price;
                 } else {
-                    // Otherwise, add new item with id, name, price, quantity
+                    // Otherwise, add new item with _id, name, price, quantity
                     state.cart = [...state.cart, { ...itemToAdd, quantity: 1 }];
                 }
             } catch (err) {
@@ -35,8 +35,8 @@ export const CartSlice = createSlice({
         deleteItem: (state, action) => {
             try {
                 const itemToRemove = action.payload;
-                // Find item that matches the given id
-                const updatedCart = state.cart.filter(item => item.id !== itemToRemove.id);
+                // Find item that matches the given _id
+                const updatedCart = state.cart.filter(item => item._id !== itemToRemove._id);
                 // Remove the item, return the updated cart
                 state.cart = updatedCart;
             } catch (err) {
@@ -48,8 +48,8 @@ export const CartSlice = createSlice({
         addItemQty: (state, action) => {
             try {
                 const itemToAdd = action.payload;
-                // Find existing item that matches the given id
-                const existingItem = state.cart.find(item => item.id === itemToAdd.id);
+                // Find existing item that matches the given _id
+                const existingItem = state.cart.find(item => item._id === itemToAdd._id);
                 console.log(existingItem);
                 if (existingItem) {
                     // If found, increase quantity and price
@@ -65,15 +65,15 @@ export const CartSlice = createSlice({
         minusItemQty: (state, action) => {
             try {
                 const itemToMinus = action.payload;
-                // Find existing item that matches the given id
-                const existingItem = state.cart.find(item => item.id === itemToMinus.id);
+                // Find existing item that matches the given _id
+                const existingItem = state.cart.find(item => item._id === itemToMinus._id);
                 if (existingItem && existingItem.quantity > 1) {
                     // For item with quantity at least 1, decrease quantity and price
                     existingItem.quantity -= 1;
                     existingItem.price -= itemToMinus.price;
                 } else if (existingItem.quantity === 1) {
                     // For item with quantity less than 1, remove the item
-                    const updatedCart = state.cart.filter(item => item.id !== itemToMinus.id);
+                    const updatedCart = state.cart.filter(item => item._id !== itemToMinus._id);
                     state.cart = updatedCart;
                 }
             } catch (err) {
