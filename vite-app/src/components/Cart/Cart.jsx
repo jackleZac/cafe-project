@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { itemsInCart } from "../../redux/features/handleCart/CartSlice";
-import { AddQuantity } from "../../redux/features/handleCart/AddQuantity";
-import { MinusQuantity } from "../../redux/features/handleCart/MinusQuantity";
-import { RemoveItem } from "../../redux/features/handleCart/RemoveItem";
-import { ShowTotalPrice } from "../../redux/features/handleCart/ShowTotalPrice";
+import { itemsInCart } from "../../redux/handleCart/CartSlice";
+import { AddQuantity } from "../../redux/handleCart/AddQuantity";
+import { MinusQuantity } from "../../redux/handleCart/MinusQuantity";
+import { RemoveItem } from "../../redux/handleCart/RemoveItem";
+import { ShowTotalPrice } from "../../redux/handleCart/ShowTotalPrice";
 
 
 export const Cart = () => {
@@ -18,11 +18,11 @@ export const Cart = () => {
                 {items.length == 0 ? <p className="text-center">Empty</p> : 
                 <ul>
                     {items.map((eachItem) => (
-                        <li key={eachItem.id}>
+                        <li key={eachItem._id}>
                             <div className="flex p-2 w-full border-b">
                                 <div className="w-3/5 truncate">
                                     <div className="text-base">{eachItem.name}</div>
-                                    <div className="text-sm">${eachItem.price}</div>
+                                    <div className="text-sm">${eachItem.accPrice}</div>
                                 </div>
                                 <div className="w-1/5 pl-2 flex my-auto text-center">
                                     <AddQuantity {...eachItem}/>

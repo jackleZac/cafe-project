@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { SpinningCircles } from 'react-loading-icons';
-import { AddItemToCart } from '../../redux/features/handleCart/addItemToCart';
+import { AddItemToCart } from '../../redux/handleCart/AddItemToCart';
 import { useDispatch } from 'react-redux';
 
 const ProductCard = ({ _id, name, imageKey, description, category, price }) => {

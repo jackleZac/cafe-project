@@ -5,8 +5,9 @@ const initialState = {
     total: null,
 };
 
+// Update the total cost for all items in a cart
 const calcTotal = (cart) => {
-    return cart.reduce((acc, item) => acc + item.price, 0);
+    return cart.reduce((acc, item) => acc + item.accPrice, 0);
 };
 
 export const CartSlice = createSlice({
@@ -16,18 +17,18 @@ export const CartSlice = createSlice({
         addToCart: (state, action) => {
             try {
                 const itemToAdd = action.payload;
-                // Check if the item with the same _id already exists in the cart
+                // Check if similar item already exists in a cart
                 const existingItem = state.cart.find(item => item._id === itemToAdd._id);
                 if (existingItem) {
-                    // If item has been previously added, just update quantity and price
-                    existingItem.quantity += 1;
-                    existingItem.price += itemToAdd.price;
+                    // If similar item exists, update quantity and price accordingly
+                    existingItem.quantity += itemToAdd.quantity;
+                    existingItem.accPrice = existingItem.initialPrice * existingItem.quantity;
                 } else {
-                    // Otherwise, add new item with _id, name, price, quantity
-                    state.cart = [...state.cart, { ...itemToAdd, quantity: 1 }];
+                    // Otherwise, add the new item with _id, name, initalPrice, accPrice, quantity: 1
+                    state.cart = [...state.cart, { ...itemToAdd}];
                 }
             } catch (err) {
-                console.log(err);
+                console.log(`addToCart did not work as expected. ${err}`);
             } finally {
                 state.total = calcTotal(state.cart);
             }
@@ -35,9 +36,9 @@ export const CartSlice = createSlice({
         deleteItem: (state, action) => {
             try {
                 const itemToRemove = action.payload;
-                // Find item that matches the given _id
+                // Find similar item by _id
                 const updatedCart = state.cart.filter(item => item._id !== itemToRemove._id);
-                // Remove the item, return the updated cart
+                // Remove item, return the updated cart
                 state.cart = updatedCart;
             } catch (err) {
                 console.log(err);
@@ -48,13 +49,13 @@ export const CartSlice = createSlice({
         addItemQty: (state, action) => {
             try {
                 const itemToAdd = action.payload;
-                // Find existing item that matches the given _id
+                // Find similar item by _id
                 const existingItem = state.cart.find(item => item._id === itemToAdd._id);
                 console.log(existingItem);
                 if (existingItem) {
-                    // If found, increase quantity and price
+                    // If similar item exists, update quantity and price accordingly
                     existingItem.quantity += 1;
-                    existingItem.price += itemToAdd.price;
+                    existingItem.accPrice = existingItem.initialPrice * existingItem.quantity;
                 };
             } catch (err) {
                 console.log(err);
@@ -64,18 +65,19 @@ export const CartSlice = createSlice({
         },
         minusItemQty: (state, action) => {
             try {
-                const itemToMinus = action.payload;
-                // Find existing item that matches the given _id
-                const existingItem = state.cart.find(item => item._id === itemToMinus._id);
-                if (existingItem && existingItem.quantity > 1) {
-                    // For item with quantity at least 1, decrease quantity and price
+                const itemToDeduct = action.payload;
+                // Find similar item by _id
+                const existingItem = state.cart.find(item => item._id === itemToDeduct._id);
+                console.log(existingItem);
+                if (existingItem.quantity > 1) {
+                    // If similar item exists, update quantity and price accordingly
                     existingItem.quantity -= 1;
-                    existingItem.price -= itemToMinus.price;
-                } else if (existingItem.quantity === 1) {
-                    // For item with quantity less than 1, remove the item
-                    const updatedCart = state.cart.filter(item => item._id !== itemToMinus._id);
+                    existingItem.accPrice = existingItem.initialPrice * existingItem.quantity;
+                } else {
+                    const updatedCart = state.cart.filter(item => item._id !== itemToDeduct._id);
+                    // Remove item, return the updated cart
                     state.cart = updatedCart;
-                }
+                };
             } catch (err) {
                 console.log(err);
             } finally {

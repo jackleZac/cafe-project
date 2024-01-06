@@ -26,7 +26,7 @@ export const Footer = () => {
                 <h3 className='font-bold'>About Us</h3>
                 <ul>
                     {ABOUT.map((link) => (
-                        <li className=''><a href={link.href}>{link.name}</a></li>
+                        <li key={link.name}><a href={link.href}>{link.name}</a></li>
                     ))}
                 </ul>
             </div>
@@ -34,7 +34,7 @@ export const Footer = () => {
                 <h3 className='font-bold'>Contact Us</h3>
                 <ul>
                     {CONTACT.map((link) => (
-                        <li className=''><a href={link.href}>{link.name}</a></li>
+                        <li key={link.name}><a href={link.href}>{link.name}</a></li>
                     ))}
                 </ul>
             </div>
