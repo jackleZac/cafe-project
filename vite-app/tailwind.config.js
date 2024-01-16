@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'cafe-interior-design': "url('./src/assets/cafeDesign1.jpg')"
+      }
+    },
   },
   plugins: [],
 }

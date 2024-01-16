@@ -17,7 +17,7 @@ function classNames(...classes) {
 
 export const Header = () => {
   return (
-    <div className="w-full flex flex-row justify-between bg-[#373333]">
+    <header className="w-full h-24 z-40 fixed flex flex-row justify-between bg-[#373333]">
         <div className="text-white m-2 w-32">
             <img src={LOGO} />
         </div>
@@ -57,6 +57,6 @@ export const Header = () => {
                 </Menu.Item>
             </Menu.Items>
         </Menu>
-    </div>
+    </header>
   )
 }

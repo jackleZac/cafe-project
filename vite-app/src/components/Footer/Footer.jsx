@@ -21,8 +21,8 @@ export const Footer = () => {
         <div className='h-24'>
             
         </div>
-        <div className='flex flex-row items-stretch p-24'>
-            <div className='basis-1/3'>
+        <div className='flex lg:flex-row max-md:flex-col items-stretch p-24'>
+            <div className='my-4 lg:basis-1/3 max-md:text-center'>
                 <h3 className='font-bold'>About Us</h3>
                 <ul>
                     {ABOUT.map((link) => (
@@ -30,7 +30,7 @@ export const Footer = () => {
                     ))}
                 </ul>
             </div>
-            <div className='basis-1/3'>
+            <div className='my-4 lg:basis-1/3 max-md:text-center'>
                 <h3 className='font-bold'>Contact Us</h3>
                 <ul>
                     {CONTACT.map((link) => (
@@ -38,7 +38,7 @@ export const Footer = () => {
                     ))}
                 </ul>
             </div>
-            <div className='basis-1/3'>
+            <div className='my-4 lg:basis-1/3 max-md:text-center'>
                 <h3 className='font-bold'>Our Newsletter</h3>
                 <p>Subscribe to our newsletter to receive discounts,  announcement events, and career opportunities!</p>
                 <form action="" className='my-2'>

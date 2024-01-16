@@ -31,7 +31,7 @@ function Menu() {
   };
 
   return (
-    <div className="menu bg-[#f5f5ef]">
+    <div className="pt-24 bg-[#f5f5ef]">
       <div className="w-full bg-[#f5f5ef] flex">
       </div>
       <div className="menu-content flex">
