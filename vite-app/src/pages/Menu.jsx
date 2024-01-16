@@ -32,13 +32,11 @@ function Menu() {
 
   return (
     <div className="pt-24 bg-[#f5f5ef]">
-      <div className="w-full bg-[#f5f5ef] flex">
-      </div>
-      <div className="menu-content flex">
-        <div className="basis-1/4">
+      <div className="flex max-md:flex-col">
+        <div className="lg:">
           <Cart />
         </div>
-        <div className="basis-3/4 flex">
+        <div className="lg:">
           <ProductList products={Menu} />
         </div>
         <div className="relative text-4xl">

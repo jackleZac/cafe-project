@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
@@ -9,14 +9,39 @@ import menuPics4 from "../../assets/menuPics4.png";
 import menuPics5 from "../../assets/menuPics5.png";
 
 export const CafeCarousel = () => {
-    const settings = {
-        dots: true,
-        infinite: true,
-        autoplay: true,
-        speed: 500,
-        slidesToShow: 4,
-        slidesToScroll: 1
-        }
+  const [slidesNum, setSlidesNum ] = useState();
+
+  useEffect(() => {
+    const handleResize = () => {
+      setSlidesNum(countScreenSize());
+    }
+    // Handle the changes of screen size
+    window.addEventListener('resize', handleResize)
+  }, [])
+
+  const countScreenSize = () => {
+    if (window.innerWidth >= 768) {
+      if (window.innerWidth >= 1024) {
+        // large screen
+        return 4;
+      } else {
+        // medium screen
+        return 3;
+      }
+    } else {
+      // small screen
+      return 1;
+    }
+  }
+
+  const settings = {
+      dots: true,
+      infinite: true,
+      autoplay: true,
+      speed: 500,
+      slidesToShow: slidesNum,
+      slidesToScroll: 1
+      }
   return (
     <div className='w-1/2 z-0 mx-auto'>
         <Slider {...settings}>

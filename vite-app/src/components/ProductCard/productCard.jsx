@@ -25,7 +25,7 @@ const ProductCard = ({ _id, name, imageKey, description, category, price }) => {
     }, [imageKey]);
 
     return (
-        <div className="relative mx-2 my-3 w-1/5 h-72 bg-white shadow-md">
+        <div className="relative mx-2 my-3 w-48 h-72 bg-white shadow-md">
             {loading ? (<p>Loading...</p>) : ( 
             <div>
                 <div className="image-card">

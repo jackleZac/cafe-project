@@ -2,7 +2,7 @@ import ProductCard from './productCard';
 
 const ProductList = ({ products }) => {
     return (
-        <div className="product-list flex flex-wrap mr-4 ml-4">
+        <div className="lg:w-7/9 sm:w-full flex lg:flex-rows max-sm:flex-col flex-wrap gap-1">
             {products.map((product) => (
                 <ProductCard key={product.id} {...product} />
             ))}
