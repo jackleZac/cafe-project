@@ -8,6 +8,9 @@ export default {
     extend: {
       backgroundImage: {
         'cafe-interior-design': "url('./src/assets/cafeDesign1.jpg')"
+      },
+      inset: {
+        '-100': '-100%',
       }
     },
   },

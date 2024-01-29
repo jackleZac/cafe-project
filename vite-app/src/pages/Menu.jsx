@@ -32,19 +32,17 @@ function Menu() {
 
   return (
     <div className="pt-24 bg-[#f5f5ef]">
-      <div className="flex max-md:flex-col">
-        <div className="lg:">
+      <div className="flex lg:flex-row max-md:flex-col">
+        <div className="w-2/3 min-h-1/4 max-md:hidden">
           <Cart />
         </div>
-        <div className="lg:">
+        <div className="grow">
           <ProductList products={Menu} />
         </div>
-        <div className="relative text-4xl">
-            <div className="bg-white shadow-lg fixed flex flex-col border-1 rounded-lg top-28 right-6">
-              <button className="p-2 hover:bg-slate-200" onClick={() => handleFilter(null)}><IoFastFoodOutline /></button>
-              <button className="p-2 hover:bg-slate-200" onClick={() => handleFilter("coffee")}><VscCoffee /></button>
-              <button className="p-2 hover:bg-slate-200" onClick={() => handleFilter("meals")}><GiTacos /></button>
-            </div>
+        <div className="bg-white shadow-lg fixed flex flex-col border-1 rounded-lg top-28 right-6">
+              <button className="p-2 hover:bg-slate-200 text-2xl" onClick={() => handleFilter(null)}><IoFastFoodOutline /></button>
+              <button className="p-2 hover:bg-slate-200 text-2xl" onClick={() => handleFilter("coffee")}><VscCoffee /></button>
+              <button className="p-2 hover:bg-slate-200 text-2xl" onClick={() => handleFilter("meals")}><GiTacos /></button>
         </div>
       </div>
     </div>

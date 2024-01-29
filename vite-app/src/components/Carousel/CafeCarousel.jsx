@@ -9,16 +9,6 @@ import menuPics4 from "../../assets/menuPics4.png";
 import menuPics5 from "../../assets/menuPics5.png";
 
 export const CafeCarousel = () => {
-  const [slidesNum, setSlidesNum ] = useState();
-
-  useEffect(() => {
-    const handleResize = () => {
-      setSlidesNum(countScreenSize());
-    }
-    // Handle the changes of screen size
-    window.addEventListener('resize', handleResize)
-  }, [])
-
   const countScreenSize = () => {
     if (window.innerWidth >= 768) {
       if (window.innerWidth >= 1024) {
@@ -33,6 +23,15 @@ export const CafeCarousel = () => {
       return 1;
     }
   }
+  const [slidesNum, setSlidesNum ] = useState(countScreenSize);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setSlidesNum(countScreenSize());
+    }
+    // Handle the changes of screen size
+    window.addEventListener('resize', handleResize)
+  }, [])
 
   const settings = {
       dots: true,

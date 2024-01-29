@@ -12,7 +12,7 @@ export const Cart = () => {
     const items = useSelector(itemsInCart);
 
     return (
-        <div className="m-2 p-2 min-h-1/4 bg-[#ffffff] border-black rounded shadow-md">
+        <div className="m-2 p-2 bg-[#ffffff] border-black rounded shadow-md">
             <h2 className="text-center font-bold text-xl py-2">My Cart</h2>
             <div className="p-4 mt-2 overflow-y-auto">
                 {items.length == 0 ? <p className="text-center">Empty</p> : 
