@@ -5,6 +5,14 @@ const initialState = {
     total: null,
 };
 
+/*  Cart Properties
+    _id: string,
+    name: string,
+    initialPrice: number,
+    accPrice: number,
+    quantity: number,
+*/
+
 // Update the total cost for all items in a cart
 const calcTotal = (cart) => {
     return cart.reduce((acc, item) => acc + item.accPrice, 0);
@@ -49,11 +57,11 @@ export const CartSlice = createSlice({
         addItemQty: (state, action) => {
             try {
                 const itemToAdd = action.payload;
-                // Find similar item by _id
+                // Find item to update
                 const existingItem = state.cart.find(item => item._id === itemToAdd._id);
                 console.log(existingItem);
                 if (existingItem) {
-                    // If similar item exists, update quantity and price accordingly
+                    // If found, update quantity and recalculate price accordingly
                     existingItem.quantity += 1;
                     existingItem.accPrice = existingItem.initialPrice * existingItem.quantity;
                 };

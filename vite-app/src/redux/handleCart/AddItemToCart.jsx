@@ -11,7 +11,7 @@ export const AddItemToCart = ({_id, name, price}) => {
             name:name, 
             initialPrice:price,
             accPrice:price,
-            quantity:1 };
+            quantity: 1 };
         try {
             // Add the selected item to cart
             dispatch(addToCart(item));
