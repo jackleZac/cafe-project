@@ -2,10 +2,12 @@ import ProductCard from './productCard';
 
 const ProductList = ({ products }) => {
     return (
-        <div className="flex lg:flex-rows max-sm:flex-col flex-wrap gap-1">
-            {products.map((product) => (
-                <ProductCard key={product.id} {...product} />
-            ))}
+        <div className="">
+            <div className="flex justify-evenly lg:flex-rows max-sm:flex-col flex-wrap">
+                {products.map((product) => (
+                    <ProductCard key={product.id} {...product} />
+                ))}
+            </div>
         </div>
     );
 };

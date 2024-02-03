@@ -1,5 +1,5 @@
 import React from 'react';
-import { RiDeleteRow } from "react-icons/ri";
+import { IoMdClose } from "react-icons/io";
 import { useDispatch } from 'react-redux';
 import { deleteItem } from './CartSlice';
 
@@ -15,6 +15,6 @@ export const RemoveItem = ({ _id }) => {
         }
     }
     return (
-        <button onClick={() => handleDelete()} className="float-right"><RiDeleteRow /></button>
+        <button onClick={() => handleDelete()} className="float-right my-auto"><IoMdClose /></button>
     )
 }

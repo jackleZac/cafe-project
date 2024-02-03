@@ -6,11 +6,8 @@ export default {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'cafe-interior-design': "url('./src/assets/cafeDesign1.jpg')"
-      },
-      inset: {
-        '-100': '-100%',
+      width: {
+        '128': '32rem',
       }
     },
   },

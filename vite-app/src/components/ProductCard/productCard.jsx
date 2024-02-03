@@ -25,7 +25,7 @@ const ProductCard = ({ _id, name, imageKey, description, category, price }) => {
     }, [imageKey]);
 
     return (
-        <div className="relative mx-2 my-3 w-48 h-72 bg-white shadow-md max-sm:w-2/3 max-sm:mx-auto ">
+        <div className="relative px-2 py-4 mx-2 my-3 w-48 h-fit bg-white shadow-md max-sm:w-72 max-sm:mx-auto">
             {loading ? (<p>Loading...</p>) : ( 
             <div>
                 <div className="image-card">
@@ -34,17 +34,19 @@ const ProductCard = ({ _id, name, imageKey, description, category, price }) => {
                         <img 
                             src={productImage}
                             alt={name} 
-                            style={{ w_idth: '170px', height: '140px' }}
-                            className="mx-auto mt-4"/>
+                            style={{ width: '170px', height: '140px' }}
+                            className="mx-auto mt-2"/>
                     )}
                 </div>
-                <div className="px-4">
+                <div className="grid grid-col-1">
                     <div className="text-center">
                         <h1 className="py-2 text-sm">{name}</h1>
                         {!description ? <p className='h-8'></p> : <p className='h-8 text-center text-xs'>{description}</p>}
                     </div>
-                    <div className="text-center flex flex-row">
-                        <div className="m-2 font-bold text-2xl p-2 basis-1/2">$ {price}</div>
+                    <div className="py-6">
+                        <div className="text-center font-bold text-xl">${price.toFixed(2)}</div>
+                    </div>
+                    <div className="">
                         <AddItemToCart _id={_id} name={name} price={price} />
                     </div>
                 </div> 

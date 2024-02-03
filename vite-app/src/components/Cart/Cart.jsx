@@ -13,7 +13,7 @@ export const Cart = () => {
 
     return (
         <div className="m-2 p-2 bg-[#ffffff] border-black rounded shadow-md">
-            <h2 className="text-center font-bold text-xl py-2">My Cart</h2>
+            <h2 className="text-center font-bold text-xl py-2">CART</h2>
             <div className="p-4 mt-2 overflow-y-auto">
                 {items.length == 0 ? <p className="text-center">Empty</p> : 
                 <ul>
@@ -24,13 +24,11 @@ export const Cart = () => {
                                     <div className="text-base">{eachItem.name}</div>
                                     <div className="text-sm">${eachItem.accPrice}</div>
                                 </div>
-                                <div className="w-1/5 pl-2 flex my-auto text-center">
+                                <div className="w-2/5 pl-2 flex my-auto text-center">
                                     <AddQuantity {...eachItem}/>
                                     <div className="basis-1/2 m-2">{eachItem.quantity}</div>
                                     <MinusQuantity {...eachItem} />
-                                </div>
-                                <div className="w-1/5">
-                                    <RemoveItem {...eachItem} />
+                                    <div className="mx-2 my-auto"><RemoveItem {...eachItem} /></div>
                                 </div>
                             </div>
                         </li>
@@ -38,7 +36,7 @@ export const Cart = () => {
                 </ul>}
             </div>
             <ShowTotalPrice />
-            <button className="w-full p-4 text-center border-solid border-2">CHECKOUT</button>
+            <button className="w-full p-4 text-center text-white font-bold bg-[#373333] border-solid border-2">CHECKOUT</button>
         </div>
     )
 }

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Menu } from '@headlessui/react';
 import { VscAccount } from "react-icons/vsc";
 import { IoMenu } from "react-icons/io5";
 import { IoMdClose } from "react-icons/io";

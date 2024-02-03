@@ -23,7 +23,7 @@ export const AddItemToCart = ({_id, name, price}) => {
     return (
         // Executes handleAddToCart when a button is clicked
         <button onClick={() => handleAddToCart()}
-            className="text-sm text-center my-4 basis-1/2 bg-[#d5dee2] rounded-xl">
+            className="text-sm text-center py-2 w-full bg-[#d5dee2] rounded-xl">
             ORDER
         </button>
     )
