@@ -9,14 +9,14 @@ import cafeDesign4 from "../assets/cafeDesign4.jpg";
 function Home() {
   return (
     <div className="">
-      <div className="bg-[#f5f5ef] pt-24 grid lg:grid-cols-3 max-md:grid-cols-1 max-md:pt-12">
+      <div className="bg-[#f5f5ef] pt-24 grid lg:grid-cols-3 max-md:grid-cols-1 max-lg:pt-12">
         <div className="my-12 lg:col-span-2 lg:border-r-4 max-md:border-b-4 border-[#c6c0b7]">
           <img src={cafeDesign1} className="lg:w-2/3 mx-auto"/>
         </div>
         <div className="my-auto mx-auto w-4/5 px-12 text-[#373333] text-center">
           <h1 className="font-bold text-2xl my-4">ENJOY THE ARTISTIC VIBE AT OUR CAFE</h1>
           <p className="my-4">while sipping on coffee and munching on wraps</p>
-          <button className="my-2 mb-12 text-white p-4 bg-[#545454] rounded-3xl">VIEW MENU</button>
+          <button className="my-2 mb-12 p-4 bg-[#545454] text-white rounded-3xl transition duration-700 hover:-translate-y-1 hover:scale-105">VIEW MENU</button>
         </div>
       </div>
       <div className="bg-[#c6c0b7] max-md:text-center max-md:px-12">
@@ -24,8 +24,8 @@ function Home() {
           <h2 className="text-2xl my-4 font-bold">PROMOTION AND EVENTS</h2>
           <p className="text-lg my-4">JOIN OUR LOYALTY PROGRAM TO ENJOY EXCLUSIVE DISCOUNTS</p>
           <div className="">
-            <button className="w-24 text-white text-center py-3 bg-[#cb9b73] rounded">Register</button>
-            <button className="w-24 my-4 ml-6 text-white text-center py-3 bg-[#cb9b73] rounded">Login</button>
+            <button className="w-24 text-white text-center py-3 bg-[#cb9b73] rounded transition duration-700 hover:-translate-y-1 hover:scale-105">REGISTER</button>
+            <button className="w-24 my-4 ml-6 text-white text-center py-3 bg-[#cb9b73] rounded transition duration-700 hover:-translate-y-1 hover:scale-105">LOGIN</button>
           </div>
         </div>
         <div className='pb-12'>
@@ -37,7 +37,7 @@ function Home() {
           <div className="w-3/5 mx-auto text-center">
             <h2 className="my-6 py-4 text-2xl font-bold text-[#373333] border-b-4 border-[#c6c0b7]">ABOUT US</h2>
             <p className="my-2 text-xl text-[#1a0906]">ArtisanBrews is more than just a place to eat and drink; it is a place to appreciate the beauty and creativity of different forms of art!</p>
-            <button className="my-2 py-3 px-2 bg-[#cb9b73] text-white">Learn More</button>
+            <button className="my-2 p-4 bg-[#cb9b73] rounded-2xl text-white transition duration-700 hover:-translate-y-1 hover:scale-105">LEARN MORE</button>
           </div>
         </div>
         <div className="my-auto">
@@ -55,42 +55,42 @@ function Home() {
             </div>
           </div>
           <div className="">
-            <div className="w-1/3 px-12 py-12 bg-[#d9d9d9] lg:absolute text-center -top-20 right-36 max-md:relative max-md:top-0 max-md:right-0 max-md:w-full">
-              <h2 className="pt-8 my-4 font-bold text-2xl text-[#373333] ">OPENING HOURS</h2>
-              <table className="text-left mx-auto my-2">
+            <div className="w-1/3 px-12 py-12 bg-[#545454] lg:absolute text-center -top-20 right-36 max-md:relative max-md:top-0 max-md:right-0 max-md:w-full">
+              <h2 className="pt-8 my-4 font-bold text-2xl text-white">OPENING HOURS</h2>
+              <table className="text-left mx-auto my-2 text-white">
                 <tbody>
-                  <tr>
+                  <tr className="border-b-2 border-slate-200">
                     <td>MONDAY</td>
                     <td className="pl-4">9AM - 9PM</td>
                   </tr>
-                  <tr>
+                  <tr className="border-b-2 border-slate-200">
                     <td>TUESDAY</td>
                     <td className="pl-4">9AM - 9PM</td>
                   </tr>
-                  <tr>
+                  <tr className="border-b-2 border-slate-200">
                     <td>WEDNESDAY</td>
                     <td className="pl-4">9AM - 9PM</td>
                   </tr>
-                  <tr>
+                  <tr className="border-b-2 border-slate-200">
                     <td>THURSDAY</td>
                     <td className="pl-4">9AM - 9PM</td>
                   </tr>
-                  <tr>
+                  <tr className="border-b-2 border-slate-200">
                     <td>FRIDAY</td>
                     <td className="pl-4">9AM - 9PM</td>
                   </tr>
-                  <tr>
+                  <tr className="border-b-2 border-slate-200">
                     <td>SATURDAY</td>
                     <td className="pl-4">8AM - 7PM</td>
                   </tr>
-                  <tr>
+                  <tr className="border-b-2 border-slate-200">
                     <td>SUNDAY</td>
                     <td className="pl-4">8AM - 7PM</td>
                   </tr>
                 </tbody>
               </table>
-              <p className="my-4 mx-8 text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 93250, Kuching, Malaysia</p>
-              <button className="p-4 my-4 border-2 border-[#545454] trasition duration-700 ease-in-out hover:rounded-2xl hover:px-6">MAKE A RESERVATION</button>
+              <p className="py-4 mx-16 text-base text-[#ead6bb] border-b-2 border-[#ead6bb]">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 93250, Kuching, Malaysia</p>
+              <button className="p-4 my-6 mx-auto rounded-xl bg-[#d9d9d9] text-[#545454] transition duration-700 hover:-translate-y-1 hover:scale-105">MAKE A RESERVATION</button>
             </div>
           </div>
         </div>
