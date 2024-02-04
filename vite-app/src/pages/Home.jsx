@@ -55,7 +55,7 @@ function Home() {
             </div>
           </div>
           <div className="">
-            <div className="w-1/3 px-12 py-12 bg-[#545454] lg:absolute text-center -top-20 right-36 max-md:relative max-md:top-0 max-md:right-0 max-md:w-full">
+            <div className="w-1/3 px-12 py-6 bg-[#545454] lg:absolute text-center -top-20 right-36 max-md:relative max-md:top-0 max-md:right-0 max-lg:w-full">
               <h2 className="pt-8 my-4 font-bold text-2xl text-white">OPENING HOURS</h2>
               <table className="text-left mx-auto my-2 text-white">
                 <tbody>

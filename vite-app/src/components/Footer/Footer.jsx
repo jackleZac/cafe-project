@@ -2,6 +2,7 @@ import React from 'react';
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa";
+import { TfiEmail } from "react-icons/tfi";
 
 const ABOUT = [
     { name: 'Who We Are', href: '/'},
@@ -18,11 +19,9 @@ const CONTACT = [
 export const Footer = () => {
   return (
     <div className='flex flex-col divide-y bg-[#c6c0b7]'>
-        <div className='h-24'>
-            
-        </div>
-        <div className='flex lg:flex-row max-md:flex-col items-stretch p-24'>
-            <div className='my-4 lg:basis-1/3 max-md:text-center'>
+        <div className='h-24'></div>
+        <div className='flex lg:flex-row max-md:flex-col justify-around'>
+            <div className='my-4 max-md:text-center'>
                 <h3 className='font-bold'>About Us</h3>
                 <ul>
                     {ABOUT.map((link) => (
@@ -30,7 +29,7 @@ export const Footer = () => {
                     ))}
                 </ul>
             </div>
-            <div className='my-4 lg:basis-1/3 max-md:text-center'>
+            <div className='my-4 max-md:text-center'>
                 <h3 className='font-bold'>Contact Us</h3>
                 <ul>
                     {CONTACT.map((link) => (
@@ -38,12 +37,14 @@ export const Footer = () => {
                     ))}
                 </ul>
             </div>
-            <div className='my-4 lg:basis-1/3 max-md:text-center'>
+            <div className='my-4 max-md:text-center'>
                 <h3 className='font-bold'>Our Newsletter</h3>
-                <p>Subscribe to our newsletter to receive discounts,  announcement events, and career opportunities!</p>
+                <p className='w-72 mx-auto'>Subscribe to our newsletter to receive discounts,  announcement events, and career opportunities!</p>
                 <form action="" className='my-2'>
-                    <input type="text" placeholder="email@gmail.com" className="text-sm p-2"/>
-                    <input type="submit" value="SUBSCRIBE" className="bg-[#1a0906] text-white text-sm p-2"/>
+                    <div className='flex flex-row max-lg:justify-center'>
+                        <input type="text" placeholder="email@gmail.com" className="text-sm p-2"/>
+                        <button className="bg-[#1a0906] text-white"><p className='text-sm p-2'>SUBSCRIBE</p></button>
+                    </div>
                 </form>
             </div>
         </div>
