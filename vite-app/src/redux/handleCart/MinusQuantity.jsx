@@ -16,7 +16,7 @@ export const MinusQuantity = ({ _id }) => {
         }
     }
     return (
-    <button onClick={() => handleMinusQuantity()} className="text-xl">
+    <button onClick={() => handleMinusQuantity()} className="text-xl active:scale-105">
         <CiSquareMinus />
     </button>
   )

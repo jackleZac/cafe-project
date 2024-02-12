@@ -8,6 +8,9 @@ export default {
     extend: {
       width: {
         '128': '32rem',
+      },
+      backgroundImage: {
+        'cafeDesign5' : "url('./src/assets/cafeDesign5.jpg')",
       }
     },
   },

@@ -15,7 +15,7 @@ export const AddQuantity = ({ _id}) => {
         }
     }
     return (
-    <button onClick={() => handleAddQuantity()} className="text-xl">
+    <button onClick={() => handleAddQuantity()} className="text-xl active:scale-105">
         <CiSquarePlus />
     </button>
   )
