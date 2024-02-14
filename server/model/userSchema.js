@@ -2,10 +2,6 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
-    _id: {
-        type: String,
-        required: true,
-    },
     username: {
         type: String,
         required: true,
@@ -20,9 +16,9 @@ const userSchema = new Schema({
     },
     phone: {
         type: String,
-        required: false,
+        required: true,
     }
 })
 
-const Menu = mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema);
 module.exports = User;

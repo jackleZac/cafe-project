@@ -1,12 +1,15 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
 const express = require('express');
-const Menu = require('./model/menuSchema');
 const app = express();
 const cors = require('cors');
-const bcyrpt = require('bcrypt')
-const cookieParser = require('cookie-parser')
+const bcyrpt = require('bcrypt');
+const cookieParser = require('cookie-parser');
+const { generateToken, validateToken } = require('./middleware/authMiddleware');
 
+// Import model schemas
+const Menu = require('./model/menuSchema');
+const User = require('./model/userSchema');
 
 // Middleware
 app.use(express.json());
@@ -29,6 +32,7 @@ mongoose.connect(process.env.DB, { dbName: 'cafe' })
 // Define routes to handle menu
 app.get('/api/get-menu', async (req, res) => {
     try {
+        // GET all available menu
         const items = await Menu.find({});
         res.status(200).send(items);
         console.log(items);
@@ -40,8 +44,9 @@ app.get('/api/get-menu', async (req, res) => {
 
 app.get('/api/get-menu/:category', async (req, res) => {
     try {
-        const filteredMenu = req.params.category;
-        const items = await Menu.find({ category: filteredMenu}).exec();
+        const targetedMenu = req.params.category;
+        // Get a specific menu
+        const items = await Menu.find({ category: targetedMenu}).exec();
         res.status(200).send(items)
         console.log(items)
     } catch (error) {
@@ -51,18 +56,25 @@ app.get('/api/get-menu/:category', async (req, res) => {
 })
 
 // Defines routes to handle authentication
-app.post('/register', (req, res) => {
+app.post('/register', async (req, res) => {
     const { username, password, email, phone } = req.body;
-    bcyrpt.hash(password, 10).then((hash) => {
-        // Store user details in MongoDB
-        res.json({password: hash})
-    })
+    // Hash user password
+    const hashpassword = await bcyrpt.hash(password, 10)
+    // Insert user details in MongoDB
+    const registerUser = new User({ 
+        username: username, 
+        password: hashpassword, 
+        email: email, 
+        phone: phone })
+    await registerUser.save();
+    res.status(200).json({ message: "Registration Success!"})
+    
 })
 
-registeredUsers = [
+const registeredUsers = [
     {
         username : "Paulo",
-        password: "$2b$10$CzibMeVoX.59oj4j0sNpVOFmWVKSuYIJBJ8P2CFYmJu/mVD0yckfK"
+        password: "$2b$10$OTCcK.KfLdTCoeYksX./UeNUGJJdO9VSp/1D9VVj0u5WrMeRcRlnG"
     },
     {
         username : "Aleyn",
@@ -74,21 +86,25 @@ registeredUsers = [
     }
 ]
 
-app.post('/login', (req, res) => {
+app.post('/login', async (req, res) => {
     const { username, password } = req.body;
-    const user = registeredUsers.find((user) => user.username === username)
-    if (!user) res.status(400).json({error: "User Not Exist"})
-      const dbPassword = user.password;
-      bcyrpt.compare(password, dbPassword).then((match) => {
+    // Check if user exists
+    try {
+        const user = await User.findOne({ username: username })
+        if (!user) res.status(400).json({error: "User Not Found"})
+        // Check password validity
+        const match = await bcyrpt.compare(password, user.password)
         if (!match) {
             res.status(400).json({error: "Incorrect Password"})
-          } else {
-            const accessToken = createTokens(user)
+        } else {
+            const accessToken = generateToken(user)
             // Store accessToken in cookie
             res.cookie("access-token", accessToken, { maxAge: 60*60, httpOnly: true})
             res.json("Logged In")
-          }
-    })
+        }
+    } catch (err) {
+        res.status(500).send({ message: 'Internal Server Error' });
+    }
 })
 
 // Start Express Server
