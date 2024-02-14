@@ -1,9 +1,11 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
 const express = require('express');
 const Menu = require('./model/menuSchema');
-require('dotenv').config();
 const app = express();
 const cors = require('cors');
+const bcyrpt = require('bcrypt')
+const cookieParser = require('cookie-parser')
 
 
 // Middleware
@@ -24,7 +26,7 @@ mongoose.connect(process.env.DB, { dbName: 'cafe' })
     })
 
 
-// Define Routes
+// Define routes to handle menu
 app.get('/api/get-menu', async (req, res) => {
     try {
         const items = await Menu.find({});
@@ -46,6 +48,47 @@ app.get('/api/get-menu/:category', async (req, res) => {
         console.log({ message: error });
         res.status(500).send({ message: 'Internal Server Error' });
     }
+})
+
+// Defines routes to handle authentication
+app.post('/register', (req, res) => {
+    const { username, password, email, phone } = req.body;
+    bcyrpt.hash(password, 10).then((hash) => {
+        // Store user details in MongoDB
+        res.json({password: hash})
+    })
+})
+
+registeredUsers = [
+    {
+        username : "Paulo",
+        password: "$2b$10$CzibMeVoX.59oj4j0sNpVOFmWVKSuYIJBJ8P2CFYmJu/mVD0yckfK"
+    },
+    {
+        username : "Aleyn",
+        password: "Aleyn"
+    },
+    {
+        username : "Rose",
+        password: "Rose"
+    }
+]
+
+app.post('/login', (req, res) => {
+    const { username, password } = req.body;
+    const user = registeredUsers.find((user) => user.username === username)
+    if (!user) res.status(400).json({error: "User Not Exist"})
+      const dbPassword = user.password;
+      bcyrpt.compare(password, dbPassword).then((match) => {
+        if (!match) {
+            res.status(400).json({error: "Incorrect Password"})
+          } else {
+            const accessToken = createTokens(user)
+            // Store accessToken in cookie
+            res.cookie("access-token", accessToken, { maxAge: 60*60, httpOnly: true})
+            res.json("Logged In")
+          }
+    })
 })
 
 // Start Express Server
