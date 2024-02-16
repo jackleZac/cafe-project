@@ -56,7 +56,7 @@ app.get('/api/get-menu/:category', async (req, res) => {
 })
 
 // Defines routes to handle authentication
-app.post('/register', async (req, res) => {
+app.post('/api/register', async (req, res) => {
     const { username, password, email, phone } = req.body;
     // Hash user password
     const hashpassword = await bcyrpt.hash(password, 10)
@@ -86,7 +86,7 @@ const registeredUsers = [
     }
 ]
 
-app.post('/login', async (req, res) => {
+app.post('/api/login', async (req, res) => {
     const { username, password } = req.body;
     // Check if user exists
     try {
@@ -99,7 +99,7 @@ app.post('/login', async (req, res) => {
         } else {
             const accessToken = generateToken(user)
             // Store accessToken in cookie
-            res.cookie("access-token", accessToken, { maxAge: 60*60, httpOnly: true})
+            res.cookie("access-token", accessToken, { maxAge: 60*60*1000, httpOnly: true, sameSite: 'None', secure: true})
             res.json("Logged In")
         }
     } catch (err) {

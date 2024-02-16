@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { VscAccount } from "react-icons/vsc";
 import { IoMenu } from "react-icons/io5";
 import { IoMdClose } from "react-icons/io";
@@ -21,8 +22,9 @@ export const Header = () => {
     )
   }
 
-  useEffect(() => {
-  }, [])
+  const handleUser = () => {
+
+  }
   return (
     <div>
         <header className="w-full h-24 z-30 fixed flex flex-row justify-between bg-[#373333]">
@@ -31,16 +33,16 @@ export const Header = () => {
             </div>
             <div className="relative my-8 mx-auto max-md:hidden">
                 {navigation.map((item) => (
-                    <a 
+                    <Link
                         key={item.name} 
-                        href={item.href} 
+                        to={item.href} 
                         className="px-4 py-2 text-white hover:border-2 border-slate-200 rounded-md">
                         {item.name}
-                    </a>
+                    </Link>
                 ))}
             </div>
             <div className="flex flex-row text-white text-4xl">
-                <button><VscAccount className="max-md:hidden mx-2 mx-6"/></button>
+                <div><Link to='/login'><VscAccount className="max-md:hidden mx-2 mx-6"/></Link></div>
                 <button onClick={() => handleMobileNav()}><IoMenu className="md:hidden mx-6 active:border-2 border-slate-200 rounded-md"/></button>
             </div>
         </header>
