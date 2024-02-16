@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { VscAccount } from "react-icons/vsc";
+import { Link, useLocation } from 'react-router-dom';
+import Avatar from 'react-avatar';
+import { MdArrowForwardIos } from "react-icons/md";
 import { IoMenu } from "react-icons/io5";
 import { IoMdClose } from "react-icons/io";
 import LOGO from "../../assets/artisanBrewsBrand.png";
 
-const navigation = [
-    { name: 'HOME', href: '/', current: true},
+let navigation = [
+    { name: 'HOME', href: '/', current: false},
     { name: 'MENU', href: '/menu', current: false},
     { name: 'ABOUT US', href: '/about', current: false},
     { name: 'CONTACT US', href: '/contact', current: false}
 ]
 
 export const Header = () => {
+  // Check the current page
+  let currentPath = useLocation();
+  // Hide mobile navigation by default
   const [showMobileNav, setMobileNav] = useState(false);
   const handleMobileNav = () => {
     showMobileNav ? (
@@ -20,11 +24,8 @@ export const Header = () => {
     ) : (
         setMobileNav(true)
     )
-  }
+  };
 
-  const handleUser = () => {
-
-  }
   return (
     <div>
         <header className="w-full h-24 z-30 fixed flex flex-row justify-between bg-[#373333]">
@@ -36,13 +37,18 @@ export const Header = () => {
                     <Link
                         key={item.name} 
                         to={item.href} 
-                        className="px-4 py-2 text-white hover:border-2 border-slate-200 rounded-md">
+                        className='px-4 py-2 text-white hover:drop-shadow-lg'>
                         {item.name}
                     </Link>
                 ))}
             </div>
             <div className="flex flex-row text-white text-4xl">
-                <div><Link to='/login'><VscAccount className="max-md:hidden mx-2 mx-6"/></Link></div>
+                <Link to='/login' 
+                    className={`mx-6 flex flex-row my-auto hover:border-2 border-slate-200 rounded-full animate-bounce hover:animate-none 
+                        ${currentPath.pathname != '/login' ? 'block' : 'hidden'}`}>
+                    <p className='text-base my-auto px-6'>LOGIN</p>
+                    <MdArrowForwardIos className='mr-6'/>
+                </Link>
                 <button onClick={() => handleMobileNav()}><IoMenu className="md:hidden mx-6 active:border-2 border-slate-200 rounded-md"/></button>
             </div>
         </header>

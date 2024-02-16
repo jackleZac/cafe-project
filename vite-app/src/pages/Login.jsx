@@ -16,8 +16,8 @@ function Login() {
         password: password
       })
       .then((res) => {
-        if (res['data'] === 'Logged In') 
-          return navigate('/about')
+        if (res['data'].message === 'Logged In') 
+          return navigate('/profile')
       })
     } catch(error) {
       console.log(error)

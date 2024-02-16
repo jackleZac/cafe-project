@@ -57,16 +57,24 @@ app.get('/api/get-menu/:category', async (req, res) => {
 
 // Defines routes to handle authentication
 app.post('/api/register', async (req, res) => {
-    const { username, password, email, phone } = req.body;
+    // Receive user details
+    const { firstName, 
+        lastName, username, 
+        birthDate, email, 
+        phone, password } = req.body;
     // Hash user password
     const hashpassword = await bcyrpt.hash(password, 10)
     // Insert user details in MongoDB
     const registerUser = new User({ 
+        firstName: firstName,
+        lastName: lastName,
         username: username, 
-        password: hashpassword, 
+        birthDate: birthDate,
         email: email, 
-        phone: phone })
+        phone: phone,
+        password: hashpassword })
     await registerUser.save();
+    // Send status to client
     res.status(200).json({ message: "Registration Success!"})
     
 })
@@ -74,7 +82,7 @@ app.post('/api/register', async (req, res) => {
 const registeredUsers = [
     {
         username : "Paulo",
-        password: "$2b$10$OTCcK.KfLdTCoeYksX./UeNUGJJdO9VSp/1D9VVj0u5WrMeRcRlnG"
+        password: "jYrt34Sq0"
     },
     {
         username : "Aleyn",
@@ -99,8 +107,9 @@ app.post('/api/login', async (req, res) => {
         } else {
             const accessToken = generateToken(user)
             // Store accessToken in cookie
-            res.cookie("access-token", accessToken, { maxAge: 60*60*1000, httpOnly: true, sameSite: 'None', secure: true})
-            res.json("Logged In")
+            res.cookie("access-token", accessToken, { maxAge: 60*60*1000, httpOnly: true, sameSite: 'None', secure: true});
+            // Send status to client
+            res.json({ message: "Logged In"})
         }
     } catch (err) {
         res.status(500).send({ message: 'Internal Server Error' });
