@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const bcyrpt = require('bcrypt');
+const bcyrpt = require('bcryptjs');
 const cookieParser = require('cookie-parser');
 const { generateToken, validateToken } = require('./middleware/authMiddleware');
 
